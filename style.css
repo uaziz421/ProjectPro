@@ -251,42 +251,7 @@ label {
   font-weight: bold;
   border-radius: 2px;
 }
-#debitprogress {
-  background: #333;
-  border-radius: 13px;
-  height: 20px;
-  width: 300px;
-  padding: 3px;
-}
 
-#creditprogress {
-  background: #333;
-  border-radius: 13px;
-  height: 20px;
-  width: 300px;
-  padding: 3px;
-}
-
-#debitprogress:after {
-  content: '80%';
-  display: block;
-  background: rgb(0, 255, 4);
-  width: 80%;
-  height: 100%;
-  border-radius: 9px;
-  text-align: center;
-}
-
-#creditprogress:after {
-  content: '60%';
-  display: block;
-  background: rgb(224, 239, 19);
-  width: 60%;
-  height: 100%;
-  border-radius: 9px;
-  text-align: center;
-  
-}
 
 body {
     font-family: Arial, sans-serif;

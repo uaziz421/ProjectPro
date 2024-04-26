@@ -17,3 +17,118 @@
         Welcome to ProjectPro. You're Favorite Project Planning Tool
       </h2>
     </div>
+
+   <center><div class="add-account-container">
+        <div class="label-add-account"><label>Project Name:</label></div>
+        <input type="text" name="Project Name" id="projectName" />
+  
+        <div class="label-add-account"><label>Project Description:</label></div>
+        <input type="text" name="Project Description" id="projectDesc" />
+  
+        <div class="label-add-account"><label>Priority:</label></div>
+        <select name="Priority" id="priority">
+          <option value="High">1-High</option>
+          <option value="Medium">2-Medium</option>
+          <option value="Low">3-Low</option>
+          </select>
+  
+        <form><div class="label-add-account"><label>List All Requirements:</label></div>
+        <input type="text" name="List" id="requirements"/></form>
+
+        <div class="label-add-account"><label>Start Date:</label></div>
+        <input type="date" name="date" id="startDate"/>
+
+        <div class="label-add-account"><label>End Date:</label></div>
+        <input type="date" name="date" id ='endDate'
+        <br />
+        <br />
+  
+        <input
+          type="submit"
+          name="Add Project"
+          id="addAccount"
+          value="Add Project"
+        />
+        <h4>
+          <a href="ProjectPro.html">Return to ProjectPro Dashboard</a>
+        </h4>
+      </div>
+
+      <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import {
+          getDatabase,
+          set,
+          get,
+          update,
+          remove,
+          ref,
+          child,
+          onValue,
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import {
+          getAuth,
+          createUserWithEmailAndPassword,
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+  
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+  
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDL8IvpC0GI2KcT0Qw2SrMolgPdysRDQpU",
+            authDomain: "projectpro-ad299.firebaseapp.com",
+            databaseURL: "https://projectpro-ad299-default-rtdb.firebaseio.com",
+            projectId: "projectpro-ad299",
+            storageBucket: "projectpro-ad299.appspot.com",
+            messagingSenderId: "950316681785",
+            appId: "1:950316681785:web:ab21067afd7b075ed2dbe8",
+            measurementId: "G-SFEBPJ6JD8"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase();
+            const dbref = ref(db);
+
+            var projectName = document.querySelector("#projectName");
+            var projectDesc = document.querySelector("#projectDesc");
+            var priority = document.querySelector("#priority");
+            var requirements = document.querySelector("#requirements");
+            var startDate = document.querySelector("#startDate");
+            var endDate = document.querySelector("#endDate");
+
+            //function to add new account
+            function CreateProject() {
+            const dbref = ref(db);
+
+        //This code adds the new account if the account does not already exist
+            //Adds information to database
+            set(ref(db, "Projects/" + projectName.value), {
+              ProjectDesc: projectDesc.value,
+              Priority: priority.value,
+              Requirements: requirements.value,
+              StartDate: startDate.value,
+              EndDate: endDate.value,
+            })
+              .then(() => {
+                alert("Project added");
+                window.location.assign("ProjectPro.html");
+              })
+              .catch((error) => {
+                // error message in red text style
+                let errorContainer = document.createElement("div");
+                errorContainer.textContent = error;
+                errorContainer.style.color = "red";
+                document.body.appendChild(errorContainer);
+                // alert(error);
+              });
+            }
+
+      addAccount.addEventListener("click", CreateProject);
+    </script>
+  </body>
+</html>
