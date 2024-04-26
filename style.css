@@ -1,0 +1,327 @@
+@charset "UTF-8";
+
+body {
+  padding: 2em;
+
+  background-color: rgb(248, 248, 248);
+}
+
+h3 {
+  margin: 0;
+}
+
+#header {
+  border-bottom-width: thick;
+  border-bottom-style: double;
+}
+
+#header h1 {
+  font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin-bottom: 8px;
+  text-decoration: none;
+}
+#subheaderh2 {
+  font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+  font-weight: 400;
+  font-size: 22px;
+  margin-bottom: 80px;
+}
+#subheaderh3 {
+  text-align: center;
+  font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  font-size: 28px;
+}
+#label {
+  font-family: Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  text-align: left;
+}
+
+/* The flexbox used in displays the html elements in colomn form */
+/* also the "width" is fixed for the labels, inputs and button  */
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-top: 14px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-top: 14px;
+}
+/* block for logo */
+#img {
+  display: block;
+  margin: auto;
+  width: 20%;
+}
+
+.adminloginbutton-container {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding: 40px 20px;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  border-radius: 5px;
+  margin: 0 auto;
+  /* margin-top: 60px; */
+  width: 300px;
+  box-shadow: 0 0 5px rgba(219, 218, 218, 0.693);
+}
+
+#adminlogincontainer-button {
+  border: none;
+  background-color: white;
+  text-decoration: underline;
+  color: rgb(71, 137, 208);
+}
+
+#signin {
+  background-color: rgb(57, 109, 164);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+}
+
+#resetPass {
+  background-color: rgb(57, 109, 164);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+}
+
+#checkAnswers {
+  background-color: rgb(57, 109, 164);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+}
+/* flexbox is used here to center the whole form in the page */
+.signin-container {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding: 40px 20px;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  border-radius: 5px;
+  margin: 0 auto;
+  /* margin-top: 60px; */
+  width: 500px;
+  box-shadow: 0 0 5px rgba(219, 218, 218, 0.693);
+  margin-bottom: 1em;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding: 40px 20px;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  border-radius: 5px;
+  margin: 0 auto;
+  /* margin-top: 60px; */
+  width: 500px;
+  box-shadow: 0 0 5px rgba(219, 218, 218, 0.693);
+}
+
+.forgot-password {
+  text-align: center;
+  text-decoration: none;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.create-new-user-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.forgot-password a {
+  text-decoration: none;
+  color: rgb(71, 137, 208);
+}
+
+#create-user-btn {
+  border: none;
+  background-color: white;
+  text-decoration: underline;
+  color: rgb(71, 137, 208);
+}
+
+#signup {
+  background-color: rgb(57, 109, 164);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+}
+
+.signin-form label {
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+.signin-form input {
+  margin-bottom: 15px;
+  padding: 6px;
+}
+
+select {
+  margin-bottom: 15px;
+  padding: 6px;
+}
+
+.signup-form label {
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+.signup-form input {
+  margin-bottom: 5px;
+  padding: 6px;
+}
+
+#signinPassword {
+  margin: 0;
+}
+
+label {
+  font-weight: bold;
+}
+#adminButton {
+  background-color: rgb(57, 109, 164);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  margin-bottom: 1em;
+}
+
+.add-account-container {
+  margin-top: 8em;
+}
+
+.add-account-container input {
+  width: 300px;
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.add-account-container select {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.label-add-account {
+  margin-bottom: 10px;
+}
+
+#addAccount {
+  padding: 12px;
+  width: 120px;
+  background-color: rgb(27, 92, 152);
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 2px;
+}
+#debitprogress {
+  background: #333;
+  border-radius: 13px;
+  height: 20px;
+  width: 300px;
+  padding: 3px;
+}
+
+#creditprogress {
+  background: #333;
+  border-radius: 13px;
+  height: 20px;
+  width: 300px;
+  padding: 3px;
+}
+
+#debitprogress:after {
+  content: '80%';
+  display: block;
+  background: rgb(0, 255, 4);
+  width: 80%;
+  height: 100%;
+  border-radius: 9px;
+  text-align: center;
+}
+
+#creditprogress:after {
+  content: '60%';
+  display: block;
+  background: rgb(224, 239, 19);
+  width: 60%;
+  height: 100%;
+  border-radius: 9px;
+  text-align: center;
+  
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    background-color: rgb(57, 109, 164);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .choice{
+    width: 30%;
+    height: auto;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(57, 109, 164);
+  }
+
+  #projects
+{
+    background-color: rgb(57, 109, 164);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #projects{
+    background-color: rgb(57, 109, 164);
+  }
