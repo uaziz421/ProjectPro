@@ -4,7 +4,35 @@
     <meta charset="UTF-8" />
     <title>Project Pro</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+    <style>
+        .labs {
+          display: inline-block;
+          width: 100px;
+        }
+  
+        #createProjectEntry {
+          margin-bottom: 20px;
+        }
+  
+        #ProjectTable th {
+          padding: 10px;
+        }
+  
+        #ProjectTable td {
+          padding: 10px;
+        }
+  
+        td {
+          cursor: pointer;
+        }
+      </style>
+    </head>
 
   <body>
     <div style="text-align: center">
@@ -17,3 +45,143 @@
         Welcome to ProjectPro. You're Favorite Project Planning Tool
       </h2>
     </div>
+    <table class="table table-striped">
+        <thead>
+          <th>Project Name</th>
+          <th>Project Description</th>
+          <th>Priority</th>
+          <th>List of Requirements</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+        </thead>
+        <tbody id="ProjectsTable">
+          <tr></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="ProjectTable"></div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import {
+          ref,
+          push,
+          onValue,
+          getDatabase,
+          set,
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDL8IvpC0GI2KcT0Qw2SrMolgPdysRDQpU",
+            authDomain: "projectpro-ad299.firebaseapp.com",
+            databaseURL: "https://projectpro-ad299-default-rtdb.firebaseio.com",
+            projectId: "projectpro-ad299",
+            storageBucket: "projectpro-ad299.appspot.com",
+            messagingSenderId: "950316681785",
+            appId: "1:950316681785:web:ab21067afd7b075ed2dbe8",
+            measurementId: "G-SFEBPJ6JD8"
+            };
+  
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const dbref = ref(db);
+
+        let projectName;
+        let projectDesc;
+        let priority;
+        let requirements;
+        let startDate;
+        let endDate;
+        
+      window.onload = getProjects();
+
+function getProjects() {
+  const databaseRef = ref(db);
+  onValue(
+    databaseRef,
+    (snapshot) => {
+      const tableBody = document.getElementById("ProjectsTable");
+      tableBody.innerHTML = "";
+      const proj = snapshot.val();
+
+      Object.keys(proj).forEach((key) => {
+        const dataFromProjects = proj[key];
+        ProjAddToTable(dataFromProjects, tableBody);
+      });
+      TableSort();
+    },
+    {
+      onlyOnce: true,
+    }
+  );
+        
+  const dbrefProjects = ref(db, "Projects/");
+        const table = ProjectsTable;
+
+
+        //This portion of code iterates through the Accounts database to get the required information
+        onValue(dbrefProjects, (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            projectName = childSnapshot.val().ProjectName;
+            projectDesc = childSnapshot.val().ProjectDesc;
+            priority = childSnapshot.val().Priority;
+            requirements = childSnapshot.val().Requirements;
+            startDate = childSnapshot.val().StartDate;
+            endDate = childSnapshot.val().EndDate;
+          {
+              ProjAddToTable();
+            }
+          });
+          TableSort();
+        });
+    }
+
+        function TableSort() {
+        let table, i, x, y;
+        table = document.getElementById("ProjectsTable");
+        let switching = true;
+
+        while (switching) {
+          switching = false;
+          let rows = table.rows;
+
+          for (i = 1; i < rows.length - 1; i++) {
+            let Switch = false;
+
+            x = rows[i].getElementsByTagName("td")[0];
+            y = rows[i + 1].getElementsByTagName("td")[0];
+
+            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+              Switch = true;
+              break;
+            }
+          }
+          if (Switch) {
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+          }
+        }
+      }
+
+      function ProjAddToTable(dataFromProjects, tableBody) {
+        let tableRow = document.createElement("tr");
+        [
+          "ProjectName",
+          "ProjectDesc",
+          "Priority",
+          "Requirements",
+          "StartDate",
+          "EndDate"
+        ].forEach((i) => {
+          let tableData = document.createElement("td");
+          let tableDataBtn = document.createElement("td");
+          tableData.textContent = dataFromProjects[i];
+          tableRow.appendChild(tableData);
+          tableRow.appendChild(tableDataBtn);
+        })
+    };
+
+    </script>
+  </body>
+</html>
