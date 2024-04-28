@@ -223,9 +223,9 @@ label {
   margin-bottom: 1em;
 }
 
-.add-account-container {
+/* .add-account-container {
   margin-top: 8em;
-}
+} */
 
 .add-account-container input {
   width: 300px;
@@ -238,9 +238,9 @@ label {
   margin-bottom: 20px;
 }
 
-.label-add-account {
+/* .label-add-account {
   margin-bottom: 10px;
-}
+} */
 
 #addAccount {
   padding: 12px;
@@ -290,3 +290,8 @@ body {
   #projects{
     background-color: rgb(57, 109, 164);
   }
+
+  #textboxid{
+    height:400px;
+    font-size:14pt;
+}
